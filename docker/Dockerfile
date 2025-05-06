@@ -1,8 +1,9 @@
+
 ARG ARCH
 ARG VERSION
 ARG VARIANT
 
-FROM scratch:${VERSION}
+FROM public.ecr.aws/adsan07t/tomorrowthings/things-os-edge-agent:${VERSION}
 
 ARG ARCH
 ARG VERSION
