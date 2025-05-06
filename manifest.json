@@ -1,15 +1,20 @@
 {
     "$schema": "https://raw.githubusercontent.com/FLECS-Technologies/app-sdk/main/manifest.schema.json",
     "_schemaVersion": "2.0.0",
-    "app": "",
+    "app": "com.tomorrowthings.edge-agent",
     "version": "##VERSION##",
     "revision": "0",
     "image": "flecs.azurecr.io/",
     "multiInstance": false,
-    "editor": "",
+    "editor": [
+        { 
+          "name": "onboarding-key",
+          "port": 11033,
+          "supportsReverseProxy": true
+        }],
     "args": [
-        "--launch-arg-1",
-        "--launch-arg-2=8000"
+        "--restart=always",
+        "--platform=linux/arm64"
     ],
     "capabilities": [],
     "conffiles": [
@@ -24,14 +29,12 @@
         "MY_ENV=value"
     ],
     "ports": [
-        "12345:12345"
+        "11033:11033"
     ],
     "volumes": [
-        "my-app-etc:/etc/my-app",
-        "/var/lib/my-app:/var/lib/my-app"
+        "tomorrowthings-gw-config-41af838ba6f2e384a5f4ff8128ab0d322601a772e4317c04:/opt/tomorrowthings/config"
     ],
     "labels": [
-        "org.my.label",
-        "org.my.label-with-value=Some custom label value"
+        "com.tomorrowthings.things-os-edge-agent"
     ]
 }
